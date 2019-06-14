@@ -10,7 +10,7 @@ import java.util.List;
 public interface IUserDAO {
 	
 	/*添加用户对象*/
-	@Insert("insert into user(name,password,telephone,nickName,remarks,registerTime,state)values(#{name},#{password},#{telephone},#{nickName},#{remarks},#{registerTime},'1')")
+	@Insert("insert into user(name,password,telephone,nickName,remarks,registerTime,state) values(#{name},#{password},#{telephone},#{nickName},#{remarks},#{registerTime},'1')")
 	public int insert(User user);
 	
 	/*根据id查询用户对象*/
