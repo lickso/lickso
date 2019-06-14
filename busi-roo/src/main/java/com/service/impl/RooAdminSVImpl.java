@@ -6,9 +6,11 @@ import com.dao.IAdminDAO;
 import com.service.interfaces.IRooAdminSV;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
+@Service
 public class RooAdminSVImpl implements IRooAdminSV {
     @Autowired
     IAdminDAO adminDAO;
