@@ -52,6 +52,7 @@ export default [
     url: '/user/info\.*',
     type: 'get',
     response: config => {
+      console.log("mock 返回config:"+config)
       const { token } = config.query
       const info = users[token]
 

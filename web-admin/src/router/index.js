@@ -12,32 +12,9 @@ import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 
-/**
- * Note: sub-menu only appear when route children.length >= 1
- * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
- *
- * hidden: true                   if set true, item will not show in the sidebar(default is false)
- * alwaysShow: true               if set true, will always show the root menu
- *                                if not set alwaysShow, when item has more than one children route,
- *                                it will becomes nested mode, otherwise not show the root menu
- * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
- * name:'router-name'             the name is used by <keep-alive> (must set!!!)
- * meta : {
-    roles: ['admin','editor']    control the page roles (you can set multiple roles)
-    title: 'title'               the name show in sidebar and breadcrumb (recommend set)
-    icon: 'svg-name'             the icon show in the sidebar
-    noCache: true                if set true, the page will no be cached(default is false)
-    affix: true                  if set true, the tag will affix in the tags-view
-    breadcrumb: false            if set false, the item will hidden in breadcrumb(default is true)
-    activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
-  }
- */
+/*个性化*/
+import userRouter from './modules/user'
 
-/**
- * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
- */
 export const constantRoutes = [
   {
     path: '/redirect',
@@ -70,6 +47,7 @@ export const constantRoutes = [
     component: () => import('@/views/error-page/401'),
     hidden: true
   },
+  userRouter,
   {
     path: '/',
     component: Layout,
@@ -83,19 +61,7 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/documentation',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
-      }
-    ]
-  },
-  {
+  /*{
     path: '/guide',
     component: Layout,
     redirect: '/guide/index',
@@ -107,8 +73,33 @@ export const constantRoutes = [
         meta: { title: 'Guide', icon: 'guide', noCache: true }
       }
     ]
-  },
-  {
+  },*/
+  /*{
+    path: '/dashboard',
+    component: Layout,
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard',
+        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+      }
+    ]
+  },*/
+  /*{
+    path: '/documentation',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/documentation/index'),
+        name: 'Documentation',
+        meta: { title: 'Documentation', icon: 'documentation', affix: true }
+      }
+    ]
+  },*/
+
+  /*{
     path: '/profile',
     component: Layout,
     redirect: '/profile/index',
@@ -121,15 +112,16 @@ export const constantRoutes = [
         meta: { title: 'Profile', icon: 'user', noCache: true }
       }
     ]
-  }
+  }*/
 ]
+
 
 /**
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  {
+  /*{
     path: '/permission',
     component: Layout,
     redirect: '/permission/page',
@@ -169,9 +161,9 @@ export const asyncRoutes = [
         }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/icon',
     component: Layout,
     children: [
@@ -182,15 +174,15 @@ export const asyncRoutes = [
         meta: { title: 'Icons', icon: 'icon', noCache: true }
       }
     ]
-  },
+  },*/
 
   /** when your routing map is too long, you can split it into small modules **/
-  componentsRouter,
+  /*componentsRouter,
   chartsRouter,
   nestedRouter,
-  tableRouter,
+  tableRouter,*/
 
-  {
+  /*{
     path: '/example',
     component: Layout,
     redirect: '/example/list',
@@ -220,9 +212,9 @@ export const asyncRoutes = [
         meta: { title: 'Article List', icon: 'list' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/tab',
     component: Layout,
     children: [
@@ -233,9 +225,9 @@ export const asyncRoutes = [
         meta: { title: 'Tab', icon: 'tab' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/error',
     component: Layout,
     redirect: 'noRedirect',
@@ -258,9 +250,9 @@ export const asyncRoutes = [
         meta: { title: '404', noCache: true }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/error-log',
     component: Layout,
     children: [
@@ -271,9 +263,9 @@ export const asyncRoutes = [
         meta: { title: 'Error Log', icon: 'bug' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/excel',
     component: Layout,
     redirect: '/excel/export-excel',
@@ -308,9 +300,9 @@ export const asyncRoutes = [
         meta: { title: 'Upload Excel' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/zip',
     component: Layout,
     redirect: '/zip/download',
@@ -325,9 +317,9 @@ export const asyncRoutes = [
         meta: { title: 'Export Zip' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/pdf',
     component: Layout,
     redirect: '/pdf/index',
@@ -339,14 +331,14 @@ export const asyncRoutes = [
         meta: { title: 'PDF', icon: 'pdf' }
       }
     ]
-  },
-  {
+  },*/
+  /*{
     path: '/pdf/download',
     component: () => import('@/views/pdf/download'),
     hidden: true
-  },
+  },*/
 
-  {
+  /*{
     path: '/theme',
     component: Layout,
     children: [
@@ -357,9 +349,9 @@ export const asyncRoutes = [
         meta: { title: 'Theme', icon: 'theme' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: '/clipboard',
     component: Layout,
     children: [
@@ -370,9 +362,9 @@ export const asyncRoutes = [
         meta: { title: 'Clipboard', icon: 'clipboard' }
       }
     ]
-  },
+  },*/
 
-  {
+  /*{
     path: 'external-link',
     component: Layout,
     children: [
@@ -381,7 +373,7 @@ export const asyncRoutes = [
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
-  },
+  },*/
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
