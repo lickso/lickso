@@ -49,7 +49,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-      alert()
+
         if (!data) {
           reject('Verification failed, please Login again.')
         }
@@ -114,6 +114,9 @@ const actions = {
 
       // dynamically add accessible routes
       router.addRoutes(accessRoutes)
+
+      // reset visited views and cached views
+      dispatch('tagsView/delAllViews', null, { root: true })
 
       resolve()
     })

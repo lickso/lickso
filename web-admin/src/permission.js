@@ -27,27 +27,20 @@ router.beforeEach(async(to, from, next) => {
       NProgress.done()
     } else {
       // determine whether the user has obtained his permission roles through getInfo
-      const hasRoles = store.getters.roles && store.getters.roles.length > 0  //这里？空
-
-      // const hasRoles = true
-      console.log("there is hasRole :"+hasRoles)
+      const hasRoles = store.getters.roles && store.getters.roles.length > 0
       if (hasRoles) {
         next()
       } else {
         try {
-          // get user info,获取用户信息
+          // get user info
           // note: roles must be a object array! such as: ['admin'] or ,['developer','editor']
-          const { roles } = await store.dispatch('admin/getInfo')
-          console.log("用户权限"+roles)
-          console.log("用户权限"+await store.dispatch('admin/getInfo'))
+          const { roles } = await store.dispatch('user/getInfo')
 
           // generate accessible routes map based on roles
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
-          console.log("用户权限"+accessRoutes)
 
           // dynamically add accessible routes
           router.addRoutes(accessRoutes)
-          console.log("用户权限")
 
           // hack method to ensure that addRoutes is complete
           // set the replace: true, so the navigation will not leave a history record

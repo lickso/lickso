@@ -21,7 +21,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: './',
+  publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -37,16 +37,14 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        /*原来环境中的mock配置*/
-        /*target: `http://localhost:${port}/mock`,*/
-        target: `http://127.0.0.1:8888`,
+        target: `http://127.0.0.1:${port}/mock`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
       }
-    }/*,
-    after: require('./mock/mock-server.js')*/
+    },
+    after: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
@@ -59,16 +57,6 @@ module.exports = {
     }
   },
   chainWebpack(config) {
-    const cdn = {
-      // inject tinymce into index.html
-      // why use this cdn, detail see https://github.com/PanJiaChen/tinymce-all-in-one
-      js: ['https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.2/tinymce.min.js']
-    }
-    config.plugin('html')
-      .tap(args => {
-        args[0].cdn = cdn
-        return args
-      })
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
 

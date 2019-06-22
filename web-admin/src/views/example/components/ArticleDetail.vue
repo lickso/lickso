@@ -7,7 +7,7 @@
         <PlatformDropdown v-model="postForm.platforms" />
         <SourceUrlDropdown v-model="postForm.source_uri" />
         <el-button v-loading="loading" style="margin-left: 10px;" type="success" @click="submitForm">
-          Publush
+          Publish
         </el-button>
         <el-button v-loading="loading" type="warning" @click="draftForm">
           Draft
@@ -36,7 +36,7 @@
                 </el-col>
 
                 <el-col :span="10">
-                  <el-form-item label-width="120px" label="Publush Time:" class="postInfo-container-item">
+                  <el-form-item label-width="120px" label="Publish Time:" class="postInfo-container-item">
                     <el-date-picker v-model="displayTime" type="datetime" format="yyyy-MM-dd HH:mm:ss" placeholder="Select date and time" />
                   </el-form-item>
                 </el-col>
@@ -49,7 +49,7 @@
                       :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
                       :low-threshold="1"
                       :high-threshold="3"
-                      style="margin-top:8px;"
+                      style="display:inline-block"
                     />
                   </el-form-item>
                 </el-col>
@@ -183,12 +183,16 @@ export default {
     fetchData(id) {
       fetchArticle(id).then(response => {
         this.postForm = response.data
-        // Just for test
+
+        // just for test
         this.postForm.title += `   Article Id:${this.postForm.id}`
         this.postForm.content_short += `   Article Id:${this.postForm.id}`
 
-        // Set tagsview title
+        // set tagsview title
         this.setTagsViewTitle()
+
+        // set page title
+        this.setPageTitle()
       }).catch(err => {
         console.log(err)
       })
@@ -197,6 +201,10 @@ export default {
       const title = 'Edit Article'
       const route = Object.assign({}, this.tempRoute, { title: `${title}-${this.postForm.id}` })
       this.$store.dispatch('tagsView/updateVisitedView', route)
+    },
+    setPageTitle() {
+      const title = 'Edit Article'
+      document.title = `${title} - ${this.postForm.id}`
     },
     submitForm() {
       console.log(this.postForm)

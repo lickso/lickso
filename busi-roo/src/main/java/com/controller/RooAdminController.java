@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/user")
 public class RooAdminController extends BaseController{
     private static final transient Logger logger = Logger.getLogger(RooAdminController.class);
 
