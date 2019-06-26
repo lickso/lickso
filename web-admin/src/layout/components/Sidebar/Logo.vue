@@ -6,7 +6,8 @@
         <h1 v-else class="sidebar-title">{{ title }} </h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
+        <svg-icon v-if="logo" icon-class="favicon" class="sidebar-logo" />
+        <!--<img v-if="logo" :src="logo" class="sidebar-logo">-->
         <h1 class="sidebar-title">{{ title }} </h1>
       </router-link>
     </transition>
@@ -24,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Element Admin',
+      title: 'Roo 管理平台',
       logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
     }
   }
