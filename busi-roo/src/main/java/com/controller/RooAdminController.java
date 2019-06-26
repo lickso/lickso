@@ -70,7 +70,7 @@ public class RooAdminController extends BaseController{
         Object[] roles = {"admin","editor"};
         rtnObj.put("roles", roles);
         rtnObj.put("name", "杨胜");
-        rtnObj.put("avatar", "yangsheng");
+        rtnObj.put("avatar", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
         rtnObj.put("introduction", "超级管理员");
         rtnMsg.put("18543124169",rtnObj);
         return Result.success(rtnObj);
